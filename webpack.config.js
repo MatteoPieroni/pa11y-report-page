@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -23,6 +24,26 @@ module.exports = {
     module: {
         rules: [
           {
+            test: /.scss?$/,
+            use: [
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                }, {
+                    loader: "css-loader",
+                }, {
+                    loader: "postcss-loader",
+                    options: {
+                        ident: 'postcss',
+                        plugins: (loader) => [
+                            require('autoprefixer'),
+                        ]
+                    }
+                }, {
+                    loader: "sass-loader"
+                },
+            ],
+          },
+          {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
@@ -31,5 +52,13 @@ module.exports = {
           }
         ]
     },
-    plugins: [htmlPlugin]
+    plugins: [
+      htmlPlugin,
+      new MiniCssExtractPlugin({
+          filename: "[name].css",
+          options: {
+              publicPath: './'
+          }
+      }),
+    ]
 }
