@@ -1,6 +1,15 @@
+$error: #cd4435;
+$success: #708e40;
+$light-background: #eaeaea;
+$white-background: #fff;
+$light-text: #fff;
+$dark-text: #232323;
+
 body {
+    background: $light-background;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    color: $dark-text;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
@@ -8,6 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 
 button {
     border: 0;
+    border-radius: 1rem;
     padding: .5rem 1rem;
     background: #6c8e48;
     font-family: 'Roboto', sans-serif;
@@ -32,12 +42,47 @@ General
 }
 
 /************************
+Overview
+************************/
+.overview {
+    &__ {
+        &container {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: [errors] 1fr [pages] 1fr [improvement] 1fr;
+            margin: 2rem 0;
+        }
+        &number {
+            padding: 1.5rem;
+            font-size: 1.75em;
+            text-align: center;
+            span {
+                display: block;
+                font-size: 2.5em;
+            }
+        }
+        &number {
+            &errors {
+                grid-column: errors;
+            }
+            &pages {
+                grid-column: pages;
+            }
+            &comparison {
+                grid-column: improvement;
+            }
+        }
+    }
+}
+
+/************************
 Single page row
 ************************/
 .single-page {
     &__ {
         &container {
             margin-bottom: 1.2rem;
+            background: $white-background;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
         &summary {
@@ -60,7 +105,7 @@ Single page row
             text-align: center;
 
             &--red {
-                color: #cd4435;
+                color: $error;
             }
 
             p {    
@@ -86,7 +131,7 @@ Single page row
             flex-direction: column;
             align-items: flex-start;
             padding: 1.5rem;
-            background: #eaeaea;
+            background: $light-background;
         }
         &expand-button{
             align-self: flex-end;

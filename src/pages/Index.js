@@ -8,7 +8,7 @@ export default class Index extends React.Component {
     constructor(props) {
         super(props);
 
-        const previousRead = reportData[reportData - 2] ? reportData[reportData - 2] : 0;
+        const previousRead = reportData[reportData - 2] ? reportData[reportData - 2] : [];
 
         this.state = {
             loading: true,
