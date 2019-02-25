@@ -13,7 +13,7 @@ module.exports = {
     },
     mode: 'development',
     output: {
-        path: __dirname + '/dist/js',
+        path: __dirname + '/dist',
         filename: 'app.bundle.js'
     },
     devServer: {

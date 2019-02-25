@@ -6,14 +6,17 @@ $light-text: #fff;
 $grey-dark-text: #6c6c6c;
 $dark-text: #232323;
 
+$sans: 'Roboto', sans-serif;
+$mono: 'Roboto Mono', monospace;
+
 body {
     background: $light-background;
-    font-family: 'Roboto', sans-serif;
+    font-family: $sans;
     font-weight: 300;
     color: $dark-text;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 900;
+    font-weight: 700;
 }
 
 button {
@@ -21,8 +24,8 @@ button {
     border-radius: 1rem;
     padding: .5rem 1rem;
     background: #6c8e48;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+    font-family: $sans;
+    font-weight: 700;
     color: #fff;
     text-transform: uppercase;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -83,6 +86,8 @@ Single page row
     &__ {
         &container {
             margin-bottom: 1.2rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
             background: $white-background;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
@@ -147,9 +152,9 @@ Single page row
     &__ {
         &container {
             position: relative;
-            background: #fff;
-            padding: 1rem;
             margin-top: 1rem;
+            padding: 1rem;
+            background: #fff;
         }
         &type {
             position: absolute;
@@ -160,6 +165,10 @@ Single page row
             background: $error;
             color: #fff;
             text-transform: uppercase;
+        }
+        &context {
+            font-family: $mono;
+            font-size: .9em;
         }
         &selector {
             color: $grey-dark-text;

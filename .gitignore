@@ -63,3 +63,6 @@ node_modules/
 
 # pa11y data
 ac-pa11y-report.json
+
+# distribution code
+dist/
