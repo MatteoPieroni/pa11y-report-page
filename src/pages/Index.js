@@ -45,6 +45,7 @@ export default class Index extends React.Component {
         return (
             <main className="container">
                 <Overview totalNumberOfErrors={currentTotalNumberOfErrors} numberOfPages={currentNumberOfPages} previousNumberOfErrors={previousNumberOfErrors} />
+                <h2>All pages</h2>
                 {
                     currentRead &&
                     currentRead.map(pageData => <PageRow

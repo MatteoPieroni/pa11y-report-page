@@ -3,6 +3,7 @@ $success: #708e40;
 $light-background: #eaeaea;
 $white-background: #fff;
 $light-text: #fff;
+$grey-dark-text: #6c6c6c;
 $dark-text: #232323;
 
 body {
@@ -135,6 +136,33 @@ Single page row
         }
         &expand-button{
             align-self: flex-end;
+        }
+    }
+}
+
+/************************
+Single page row
+************************/
+.error-details {
+    &__ {
+        &container {
+            position: relative;
+            background: #fff;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        &type {
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+            border-radius: 1rem;
+            padding: .25em .75em;
+            background: $error;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        &selector {
+            color: $grey-dark-text;
         }
     }
 }
