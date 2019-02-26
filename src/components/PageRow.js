@@ -14,12 +14,12 @@ export class PageRow extends React.Component {
     }
 
     render() {
-        const {pageData, totalNumberOfErrors} = this.props;
+        const {pageData, comparison} = this.props;
         const {open} = this.state;
         const {documentTitle, pageUrl, issues} = pageData;
 
         const number = issues && issues.length;
-        const percentage = (number * 100 / totalNumberOfErrors).toFixed(2) + '%';
+        const percentage = +((number - comparison) * -100 / comparison).toFixed(2);
 
         return (
             <section className="row single-page__container">
@@ -28,11 +28,11 @@ export class PageRow extends React.Component {
                         <h2 className="single-page__name">{documentTitle}</h2>
                         <a href={pageUrl} target="_blank" className="single-page__url">{pageUrl}</a>
                     </div>
-                    <div className={`single-page__errors single-page__errors-number ${(number > 10) ? 'single-page__errors--red' : ''}`}>
+                    <div className={`single-page__errors single-page__errors-number ${(number > 10) ? 'single-page__errors--red' : 'single-page__errors--green'}`}>
                         <p><span>{number}</span>errors</p>
                     </div>
-                    <div className={`single-page__errors single-page__errors-score ${(number > 10) ? 'single-page__errors--red' : ''}`}>
-                        <p>{percentage}</p>
+                    <div className={`single-page__errors single-page__errors-score ${(percentage < 0) ? 'single-page__errors--red' : ''} ${(percentage > 0) ? 'single-page__errors--green' : ''}`}>
+                        <p><span>{!isNaN(percentage) ? `${percentage}%` : 'NA'}</span>{comparison} errors</p>
                     </div>
                 </div>
                 <div className="single-page__details">
@@ -41,7 +41,8 @@ export class PageRow extends React.Component {
                         <AnimateHeight height={open ? 'auto' : 0} duration={500}>
                             <Fragment>
                                 {issues && 
-                                    issues.map(issue => <ErrorDetail
+                                    issues.map((issue, i) => <ErrorDetail
+                                                key={i}
                                                 opened={open}
                                                 message={issue.message}
                                                 context={issue.context}

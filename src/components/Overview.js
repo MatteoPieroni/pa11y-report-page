@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Overview = ({totalNumberOfErrors, numberOfPages, previousNumberOfErrors}) => {
-    let improvementPercent = (totalNumberOfErrors - previousNumberOfErrors) / previousNumberOfErrors * 100;
+    let improvementPercent = +((totalNumberOfErrors - previousNumberOfErrors) / previousNumberOfErrors * -100).toFixed(2);
     improvementPercent = isFinite(improvementPercent) ? `${improvementPercent}%` : 'No';
     return (
         <div className="overview__container">
