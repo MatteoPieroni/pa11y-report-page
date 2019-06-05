@@ -34,11 +34,12 @@ export class PageRow extends React.Component {
                     <div className={`single-page__errors single-page__errors-score ${(percentage < 0) ? 'single-page__errors--red' : ''} ${(percentage > 0) ? 'single-page__errors--green' : ''}`}>
                         <p><span>{!isNaN(percentage) ? `${percentage}%` : 'NA'}</span>{comparison} errors</p>
                     </div>
+                    <div className="single-page__button">
+                        <button className="single-page__expand-button" onClick={this.showDetails}><FontAwesomeIcon icon={open ? 'caret-up' : 'caret-down'} /></button>
+                    </div>
                 </div>
-                <div className="single-page__details">
-                    <Fragment>
-                        <button className="single-page__expand-button" onClick={this.showDetails}>{open ? 'shrink' : 'expand'} <FontAwesomeIcon icon={open ? 'caret-up' : 'caret-down'} /></button>
-                        <AnimateHeight height={open ? 'auto' : 0} duration={500}>
+                <div className="single-page__footer">
+                        <AnimateHeight className="single-page__details" height={open ? 'auto' : 0} duration={500}>
                             <Fragment>
                                 {issues && 
                                     issues.map((issue, i) => <ErrorDetail
@@ -53,8 +54,7 @@ export class PageRow extends React.Component {
                                     )
                                 }
                             </Fragment>
-                        </AnimateHeight>    
-                    </Fragment>
+                        </AnimateHeight>
                 </div>
             </section>
         )                        
